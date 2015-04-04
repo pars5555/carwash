@@ -59,8 +59,8 @@ class DevicesManager extends AbstractManager {
             $deviceDto->setLastPing(date('Y-m-d H:i:s'));
             $this->updateByPk($deviceDto);
             $carwashDeviceDtos = $carwashDevicesManager->selectByField("device_id", $deviceDto->getId());
-            if (empty($carwashDeviceDtos) || $carwashDeviceDtos->getCarwashId() !== $carwashId) {
-                $carwashDevicesManager->deleteByPK($carwashDeviceDtos->getId());
+            if (empty($carwashDeviceDtos) || $carwashDeviceDtos[0]->getCarwashId() !== $carwashId) {
+                $carwashDevicesManager->deleteByPK($carwashDeviceDtos[0]->getId());
                 $carwashDevicesManager->addRow($carwashId, $deviceDto->getId());
                 return true;
             }
