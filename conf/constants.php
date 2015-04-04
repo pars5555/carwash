@@ -59,13 +59,7 @@ if (!isset($_SERVER['environment'])) {
     $_SERVER['environment'] = "local";
 }
 define("ENVIRONMENT", $_SERVER['environment']); 
-switch (ENVIRONMENT) {
-    case 'development':
-        define('DB_HOST', '127.0.0.1');
-        define('DB_USER', 'carwash');
-        define('DB_PASS', 'carwash123');
-        define('DB_NAME', 'carwash_dev');
-        break;
+switch (ENVIRONMENT) {    
     case 'production':
         define('DB_HOST', '127.0.0.1');
         define('DB_USER', 'carwash');
