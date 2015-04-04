@@ -1,0 +1,81 @@
+<?php
+
+require_once (CLASSES_PATH . "/framework/AbstractSessionManager.class.php");
+require_once (CLASSES_PATH . "/security/RequestGroups.class.php");
+require_once (CLASSES_PATH . "/framework/exceptions/RedirectException.class.php");
+
+require_once (CLASSES_PATH . "/security/UserGroups.class.php");
+require_once (CLASSES_PATH . "/security/users/GuestUser.class.php");
+require_once (CLASSES_PATH . "/security/users/AuthenticateUser.class.php");
+require_once (CLASSES_PATH . "/security/users/AdminUser.class.php");
+require_once (CLASSES_PATH . "/security/users/CarwashUser.class.php");
+
+/**
+ *
+ * @author  Naghashyan Solutions, e-mail: info@naghashyan.com
+ * @version 1.0
+ * @package framework
+ *
+ */
+class SessionManager extends AbstractSessionManager {
+
+    private $user = null;
+   
+
+    public function __construct() {
+        session_set_cookie_params(3600000);
+        session_start();
+    }
+
+    public function getUser() {        
+        if ($this->user != null) {
+            return $this->user;
+        }
+        // for test
+        $this->user = new GuestUser();
+        try {
+            if (isset($_COOKIE["ut"])) {
+                if (isset($_COOKIE["uh"]) && isset($_COOKIE["ud"])) {
+                    if ($_COOKIE["ut"] == UserGroups::$CARWASH) {
+                        $user = new CarwashUser($_COOKIE["ud"]);
+                    } else if ($_COOKIE["ut"] == UserGroups::$ADMIN) {
+                        $user = new AdminUser($_COOKIE["ud"]);
+                    }
+                }
+            }
+            if (isset($user) && $user->validate($_COOKIE["uh"])) {
+                $this->user = $user;
+            }
+            if ($this->user && $this->user->getLevel() != UserGroups::$GUEST) {
+                $hash = $_COOKIE["uh"];
+                $this->user->setUniqueId($hash, false);
+            }
+        } catch (InvalidUserException $ex) {
+            
+        }
+        return $this->user;
+    }
+
+    public function validateRequest($request, $user) {
+        if ($user->getLevel() == UserGroups::$ADMIN) {
+            return true;
+        }
+        if ($request->getRequestGroup() == RequestGroups::$guestRequest) {
+            return true;
+        }
+
+        if ($request->getRequestGroup() == RequestGroups::$carwashRequest && $user->getLevel() == UserGroups::$CARWASH) {
+            return true;
+        }
+       
+
+        return false;
+    }
+
+    private function updateUserHash($uId) {
+        $userManager = UserManager::getInstance();
+        return $userManager->updateUserHash($uId);
+    }
+}
+
+?>
