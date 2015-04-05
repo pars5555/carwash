@@ -17,7 +17,9 @@
                     {$totalAmd} 
                 </span>դր)
                 {if $isDeviceOn}
-                    <a href="javascript:void(0);" class="button grey f_reset_device_counter" device_id="{$deviceDto->getId()}">Reset Counter</a>
+                    <a href="javascript:void(0);" class="button grey inline-block f_reset_device_counter" device_id="{$deviceDto->getId()}">Reset Counter</a>
+                    <a href="javascript:void(0);" class="button grey inline-block f_restart_device" device_id="{$deviceDto->getId()}">Restart Device</a>
+                    <a href="javascript:void(0);" class="button grey inline-block f_charge_device" device_id="{$deviceDto->getId()}">Charge for 1 minute</a>
                 {/if}
             </div>
         {/foreach}

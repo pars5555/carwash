@@ -201,6 +201,10 @@ header{
     width:20%;
 }
 
+.inline-block{
+    display: inline-block;
+}
+
 .login-wrapper .button{
     max-width: 150px;
     margin:auto;
