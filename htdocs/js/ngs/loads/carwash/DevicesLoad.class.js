@@ -23,7 +23,7 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
     },
     updatePage: function () {
         window.setTimeout(function () {
-            // ngs.load('devices', {});
+            ngs.load('devices', {});
         }, 3000);
 
     },
