@@ -16,7 +16,7 @@ class DeviceDto extends AbstractDto {
         "amd_100_qty" => "amd100Qty",
         "amd_200_qty" => "amd200Qty",
         "amd_500_qty" => "amd500Qty",
-        "last_ping" => "last_ping",
+        "last_ping" => "lastPing",
         "is_busy" => "isBusy"
     );
 
