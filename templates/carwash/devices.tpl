@@ -5,7 +5,7 @@
             <div>
                 {$smarty.foreach.foo.index+1}
                 {assign var="totalAmd" value=$deviceDto->getAmd100Qty()*100+$deviceDto->getAmd200Qty()*200+$deviceDto->getAmd500Qty()*500}
-                {assign var="isDeviceOn" value="-1 minutes"|date_format:"%Y-%m-%d %H:%M:%S">$deviceDto->getLastPing() && $deviceDto->getLastPing()!=''}
+                {assign var="isDeviceOn" value="-1 minutes"|date_format:"%Y-%m-%d %H:%M:%S"<$deviceDto->getLastPing() && $deviceDto->getLastPing()!=''}
                 <span id="device_status_{$deviceDto->getId()}">
                     {if !$isDeviceOn}
                         Off
