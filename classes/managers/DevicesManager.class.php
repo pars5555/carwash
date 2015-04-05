@@ -36,12 +36,13 @@ class DevicesManager extends AbstractManager {
         return self::$instance;
     }
 
-    public function updateDeviceParameters($serialNumber, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty) {
+    public function updateDeviceParameters($serialNumber, $deviceTitle,$carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty) {
         $carwashDevicesManager = CarwashDevicesManager::getInstance();
         $deviceDtos = $this->selectByField("serial_number", $serialNumber);
         if (empty($deviceDtos)) {
             $createDto = $this->createDto();
             $createDto->setSerialNumber($serialNumber);
+            $createDto->setTitle($deviceTitle);
             $createDto->setIsBusy($isBusy);
             $createDto->setAmd100Qty($amd100Qty);
             $createDto->setAmd200Qty($amd200Qty);
@@ -53,6 +54,7 @@ class DevicesManager extends AbstractManager {
         } else {
             $deviceDto = $deviceDtos[0];
             $deviceDto->setIsBusy($isBusy);
+            $deviceDto->setTitle($deviceTitle);
             $deviceDto->setAmd100Qty($amd100Qty);
             $deviceDto->setAmd200Qty($amd200Qty);
             $deviceDto->setAmd500Qty($amd500Qty);
