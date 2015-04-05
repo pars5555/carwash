@@ -86,22 +86,6 @@ class DevicesManager extends AbstractManager {
         return false;
     }
 
-    public function updateUserHash($uId) {
-        $hash = $this->generateHash($uId);
-        $userDto = $this->mapper->createDto();
-        $userDto->setId($uId);
-        $userDto->setHash($hash);
-        $this->mapper->updateByPK($userDto);
-        return $hash;
-    }
-
-    public function generateHash($id) {
-        return md5($id * time() * 19);
-    }
-
-    public function validate($id, $hash) {
-        return $this->mapper->validate($id, $hash);
-    }
 
 }
 

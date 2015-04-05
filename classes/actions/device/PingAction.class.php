@@ -2,6 +2,7 @@
 
 require_once(CLASSES_PATH . "/actions/BaseAction.class.php");
 require_once(CLASSES_PATH . "/managers/DevicesManager.class.php");
+require_once(CLASSES_PATH . "/managers/DevicePendingActionsManager.class.php");
 
 /**
  * @author Karen Manukyan
@@ -12,8 +13,12 @@ class PingAction extends BaseAction {
         list($serialNumber, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty) = $this->validateFields();
         $devicesManager = DevicesManager::getInstance();
         $devicesManager->updateDeviceParameters($serialNumber, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty);
-        //$deviceDto = $devicesManager->getBySerialNumber($serialNumber);
-        $this->ok();
+        $deviceDto = $devicesManager->getBySerialNumber($serialNumber);
+        $deviceId = $deviceDto->getId();
+        $devicePendingActionsManager = DevicePendingActionsManager::getInstance();
+        $deviceNotSentActionObjects = $devicePendingActionsManager->getDeviceNotSentActionObjects($deviceId );
+        $devicePendingActionsManager->setDeviceNotSentActionsAsSent($deviceId );
+        $this->ok(array('actions' => $deviceNotSentActionObjects));
     }
 
     public function getRequestGroup() {

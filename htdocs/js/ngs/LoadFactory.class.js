@@ -5,6 +5,7 @@ ngs.LoadFactory.prototype={
 		this.loads = [];
 		this.loads["main"] = function temp(){return new ngs.MainLoad("main", ajaxLoader);};
 		this.loads["home"] = function temp(){return new ngs.HomeLoad("home", ajaxLoader);};
+		this.loads["devices"] = function temp(){return new ngs.DevicesLoad("devices", ajaxLoader);};
 		
 		
         //admin

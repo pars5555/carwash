@@ -60,6 +60,7 @@
             <files>
                 <file doc="true">ngs/loads/AbstractLoad.class.js</file>
                 <file>ngs/loads/main/MainLoad.class.js</file>
+                <file>ngs/loads/carwash/DevicesLoad.class.js</file>
                 				
                 <file>ngs/loads/admin/AdminMainLoad.class.js</file>
                 <file>ngs/loads/admin/AdminHomeLoad.class.js</file>
@@ -79,6 +80,7 @@
         <input>
             <files>
                 <file doc="true">ngs/actions/AbstractAction.class.js</file>
+                <file>ngs/actions/carwash/ResetDeviceCounterAction.class.js</file>
              
             </files>
         </input>
