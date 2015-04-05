@@ -10,6 +10,10 @@ require_once (CLASSES_PATH . "/loads/main/BaseGuestLoad.class.php");
 class HomeLoad extends BaseGuestLoad{
     
     public function load() {
+        if ($this->getUserLevel() === UserGroups::$CARWASH)
+        {
+            $this->redirect('devices');
+        }
     }
 
     public function getTemplate() {

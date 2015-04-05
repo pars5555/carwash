@@ -7,6 +7,7 @@ RewriteRule ^admin/?$  /dyn/admin/main/$1/?page=home [L,QSA]
 RewriteRule ^login$  /dyn/main/main/$1/?page=login [L,QSA]
 RewriteRule ^ping$  /dyn/device/do_ping/$1/ [L,QSA]
 RewriteRule ^devices$  /dyn/main/main/$1/?page=devices&package=carwash [L,QSA]
+RewriteRule ^changepass$ /dyn/main/main/$1/?page=changepass&package=carwash [L,QSA]
 
 RewriteRule ^/?$ /dyn/main/main [L,QSA] 
 RewriteRule ^dyn(/.+)?/?$ /index1.php?_url=$1 [L,QSA]

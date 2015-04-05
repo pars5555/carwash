@@ -81,6 +81,7 @@
             <files>
                 <file doc="true">ngs/actions/AbstractAction.class.js</file>
                 <file>ngs/actions/carwash/ResetDeviceCounterAction.class.js</file>
+                <file>ngs/actions/carwash/GetDevicesInfoAction.class.js</file>
              
             </files>
         </input>

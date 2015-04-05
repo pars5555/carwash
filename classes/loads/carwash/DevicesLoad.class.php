@@ -22,6 +22,7 @@ class DevicesLoad extends BaseCarwashLoad{
         }
         $devicesDtos = $devicesManager->selectByPKs($deviceIds);
         $this->addParam('devicesDtos', $devicesDtos);
+        $this->addParam('page_name', "devices");
         
         
         
