@@ -64,7 +64,7 @@ class DevicePendingActionsMapper extends AbstractMapper {
 
     public function getDeviceNotSentActions($deviceId) {
         $sql = "SELECT * from `%s` WHERE `sent`=0 AND `device_id`=%d";
-        $sqlQuery = sprintf($sql, $deviceId);
+        $sqlQuery = sprintf($sql, $this->getTableName(),  $deviceId);
         return $this->fetchRows($sqlQuery);
         
     }
