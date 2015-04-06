@@ -50,6 +50,7 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
     },
     initSetStatisticsPagePasscodeButtons: function () {
         jQuery('.f_set_statistics_page_passcode').click(function () {
+            jQuery('#savePassBtn').css({'display':"block"});
             var deviceId = jQuery(this).attr('device_id');
             jQuery('#passcode_device_id').val(deviceId);
             var currentPasscode = jQuery(this).attr('statistics_page_passcode');
