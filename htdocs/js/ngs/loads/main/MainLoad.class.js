@@ -1,37 +1,38 @@
 ngs.MainLoad = Class.create(ngs.AbstractLoad, {
-    initialize: function($super, shortCut, ajaxLoader) {
+    initialize: function ($super, shortCut, ajaxLoader) {
         $super(shortCut, "main", ajaxLoader);
     },
-    getUrl: function() {
+    getUrl: function () {
         return "main";
     },
-    getMethod: function() {
+    getMethod: function () {
         return "POST";
     },
-    getContainer: function() {
+    getContainer: function () {
         return "content";
     },
-    getName: function() {
+    getName: function () {
         return "main";
     },
-    afterLoad: function() {
-      ngs.nestLoad(jQuery("#contentLoad").val(), {});
-       this.initSetStatisticsPagePasscodeButtons();
+    afterLoad: function () {
+        ngs.nestLoad(jQuery("#contentLoad").val(), {});
+        this.initSetStatisticsPagePasscodeButtons();
     },
     initSetStatisticsPagePasscodeButtons: function () {
-        
+
         jQuery('#savePassBtn').click(function () {
             var passcode = "";
             jQuery('#deviceStatisticsPascodeModal .f_modal_content').find('select').each(function () {
                 var buttonIndex = jQuery(this).val();
                 passcode += buttonIndex;
             });
-            ngs.action('set_device_passcode',{'passcode':passcode});
+            var deviceId = jQuery('#passcode_device_id').val();
+            ngs.action('set_device_passcode', {'passcode': passcode, 'device_id': deviceId});
         });
-       
+
 
     }
-    
+
 
 
 });
