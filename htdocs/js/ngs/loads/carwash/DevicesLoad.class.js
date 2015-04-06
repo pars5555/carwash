@@ -18,6 +18,7 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
         this.initResetDeviceCounterButtons();
         this.initRestartDeviceButtons();
         this.initChargeDeviceButtons();
+        this.initSetStatisticsPagePasscodeButtons();
         this.updatePage();
 
     },
@@ -44,6 +45,28 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
         jQuery('.f_charge_device').click(function () {
             var deviceId = jQuery(this).attr('device_id');
             ngs.action("charge_device", {"device_id": deviceId});
+        });
+
+    },
+    initSetStatisticsPagePasscodeButtons: function () {
+        jQuery('.f_set_statistics_page_passcode').click(function () {
+            var deviceId = jQuery(this).attr('device_id');
+            jQuery('#passcode_device_id').val(deviceId);
+            var currentPasscode = jQuery(this).attr('statistics_page_passcode');
+            var i = 0;
+            jQuery('#deviceStatisticsPascodeModal .f_modal_content').find('select').each(function () {
+                jQuery(this).val(currentPasscode[i++]);
+            });
+            jQuery("#deviceStatisticsPascodeModal .f_modal_content").addClass("active");
+            jQuery("#deviceStatisticsPascodeModal").removeClass("hide");
+            jQuery("#deviceStatisticsPascodeModal .close_button,#deviceStatisticsPascodeModal .overlay").click(function () {
+                jQuery("#deviceStatisticsPascodeModal .f_modal_content").removeClass("active");
+                jQuery("#deviceStatisticsPascodeModal").addClass("hide");
+            });
+        });
+
+        jQuery(".overlay").click(function () {
+            jQuery(this).parent().addClass("hide");
         });
 
     }

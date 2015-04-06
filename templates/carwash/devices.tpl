@@ -23,8 +23,10 @@
                     <a href="javascript:void(0);" class="button grey inline-block f_reset_device_counter" device_id="{$deviceDto->getId()}">Reset Counter</a>
                     <a href="javascript:void(0);" class="button grey inline-block f_restart_device" device_id="{$deviceDto->getId()}">Restart Device</a>
                     <a href="javascript:void(0);" class="button grey inline-block f_charge_device" device_id="{$deviceDto->getId()}">Charge for 1 minute</a>
+                    <a href="javascript:void(0);" class="button grey inline-block f_set_statistics_page_passcode" statistics_page_passcode="{$deviceDto->getStatisticsPagePasscode()}" device_id="{$deviceDto->getId()}">Set Statistics Passcode</a>
                 {/if}
             </div>
         {/foreach}
     </div>
 </div>
+
