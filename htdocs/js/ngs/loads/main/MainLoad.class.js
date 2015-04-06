@@ -26,7 +26,7 @@ ngs.MainLoad = Class.create(ngs.AbstractLoad, {
                 var buttonIndex = jQuery(this).val();
                 passcode += buttonIndex;
             });
-            alert(passcode);
+            ngs.action('set_device_passcode',{'passcode':passcode});
         });
        
 
