@@ -20,26 +20,10 @@ class UpdateDevicesInfoAction extends BaseCarwashAction {
         }
         $devicesDtos = $devicesManager->selectByPKs($deviceIds);
         $devices = array();
-        $datetime = new DateTime('-10 seconds');
-        $tenSecondsBeforeNow = $datetime->format("Y-m-d H:i:s");
         foreach ($devicesDtos as $deviceDto) {
-            $device = new stdClass();
-            $device->id = $deviceDto->getId();
-            $lastPing = $deviceDto->getLastPing();
-            $deviceIsOn = $tenSecondsBeforeNow < $deviceDto->getLastPing() && !empty($lastPing);
-            if (!$deviceIsOn) {
-                $device->status = 'off';
-            }else
-            {
-                $device->status = $deviceDto->getIsBusy()==1?'busy':'free';                
-            }
-            $totalAmd = $deviceDto->getAmd100Qty() * 100 + $deviceDto->getAmd200Qty() * 200 + $deviceDto->getAmd500Qty() * 500;
-            $device->totalAmd = $totalAmd;
-            $device->title = $deviceDto->getTitle();
-            $device->passcode= $deviceDto->getStatisticsPagePasscode();
-            
+            $devices[] = $devicesManager->convertToDeviceObject($deviceDto);
         }
-        $this->ok(array('devices' => $device));
+        $this->ok(array('devices' => $devices));
     }
 
 }

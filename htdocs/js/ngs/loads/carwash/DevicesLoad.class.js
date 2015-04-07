@@ -27,7 +27,7 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
         window.setTimeout(function () {
             ngs.action('update_devices_info', {});
             self.updatePage();
-        }, 3000);
+        }, 1000);
 
     },
     initResetDeviceCounterButtons: function () {
@@ -84,7 +84,7 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
             window.setTimeout(function () {
                 jQuery("#deviceStatisticsPascodeModal .f_modal_content").removeClass("active");
                 jQuery("#deviceStatisticsPascodeModal").addClass("hide");
-            }, 5000);
+            }, 3000);
         });
 
     }

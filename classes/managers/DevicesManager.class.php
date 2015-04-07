@@ -2,6 +2,7 @@
 
 require_once (CLASSES_PATH . "/framework/AbstractManager.class.php");
 require_once (CLASSES_PATH . "/dal/mappers/DevicesMapper.class.php");
+require_once (CLASSES_PATH . "/dal/dto/Device.class.php");
 require_once (CLASSES_PATH . "/managers/CarwashDevicesManager.class.php");
 
 class DevicesManager extends AbstractManager {
@@ -88,6 +89,30 @@ class DevicesManager extends AbstractManager {
             return true;
         }
         return false;
+    }
+
+    public function convertToDeviceObject($deviceDto) {
+        $datetime = new DateTime('-10 seconds');
+        $tenSecondsBeforeNow = $datetime->format("Y-m-d H:i:s");
+        $device = new Device();
+        $device->setId($deviceDto->getId());
+        $device->setTitle($deviceDto->getTitle());
+        $device->setStatisticsPagePasscode($deviceDto->getStatisticsPagePasscode());
+        $device->setAmd100Qty($deviceDto->getAmd100Qty());
+        $device->setAmd200Qty($deviceDto->getAmd200Qty());
+        $device->setAmd500Qty($deviceDto->getAmd500Qty());
+        $device->setIsBusy($deviceDto->getIsBusy());
+        $device->setLastPing($deviceDto->getLastPing());
+        $lastPing = $deviceDto->getLastPing();
+        $deviceIsOn = $tenSecondsBeforeNow < $deviceDto->getLastPing() && !empty($lastPing);
+        if (!$deviceIsOn) {
+            $device->setStatus('off');
+        } else {
+            $device->setStatus($deviceDto->getIsBusy() == 1 ? 'busy' : 'free');
+        }
+        $totalAmd = $deviceDto->getAmd100Qty() * 100 + $deviceDto->getAmd200Qty() * 200 + $deviceDto->getAmd500Qty() * 500;
+        $device->setTotalAmd($totalAmd);
+        return $device;
     }
 
 }
