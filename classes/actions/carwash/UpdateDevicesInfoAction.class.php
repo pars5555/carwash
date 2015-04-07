@@ -25,7 +25,8 @@ class UpdateDevicesInfoAction extends BaseCarwashAction {
         foreach ($devicesDtos as $deviceDto) {
             $device = new stdClass();
             $device->id = $deviceDto->getId();
-            $deviceIsOn = $tenSecondsBeforeNow < $deviceDto->getLastPing() && !empty($deviceDto->getLastPing());
+            $lastPing = $deviceDto->getLastPing();
+            $deviceIsOn = $tenSecondsBeforeNow < $deviceDto->getLastPing() && !empty($lastPing);
             if (!$deviceIsOn) {
                 $device->status = 'off';
             }else
