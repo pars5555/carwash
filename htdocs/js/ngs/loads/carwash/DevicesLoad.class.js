@@ -23,8 +23,10 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
 
     },
     updatePage: function () {
+        var self = this;
         window.setTimeout(function () {
-            ngs.load('devices', {});
+            ngs.action('update_devices_info', {});
+            self.updatePage();
         }, 3000);
 
     },
@@ -50,10 +52,10 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
     },
     initSetStatisticsPagePasscodeButtons: function () {
         jQuery('.f_set_statistics_page_passcode').click(function () {
-            jQuery('#savePassBtn').css({'display':"block"});
+            jQuery('#savePassBtn').css({'display': "block"});
             var deviceId = jQuery(this).attr('device_id');
             jQuery('#passcode_device_id').val(deviceId);
-            var currentPasscode = jQuery(this).attr('statistics_page_passcode');
+            var currentPasscode = jQuery('#statistics_page_passcode_'+deviceId).val();
             var i = 0;
             jQuery('#deviceStatisticsPascodeModal .f_modal_content').find('select').each(function () {
                 jQuery(this).val(currentPasscode[i++]);
@@ -68,6 +70,21 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
 
         jQuery(".overlay").click(function () {
             jQuery(this).parent().addClass("hide");
+        });
+
+        jQuery('#savePassBtn').click(function () {
+            jQuery(this).css({'display': "none"});
+            var passcode = "";
+            jQuery('#deviceStatisticsPascodeModal .f_modal_content').find('select').each(function () {
+                var buttonIndex = jQuery(this).val();
+                passcode += buttonIndex;
+            });
+            var deviceId = jQuery('#passcode_device_id').val();
+            ngs.action('set_device_passcode', {'passcode': passcode, 'device_id': deviceId});
+            window.setTimeout(function () {
+                jQuery("#deviceStatisticsPascodeModal .f_modal_content").removeClass("active");
+                jQuery("#deviceStatisticsPascodeModal").addClass("hide");
+            }, 5000);
         });
 
     }
