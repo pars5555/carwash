@@ -34,13 +34,7 @@ class ImageAction extends BaseAction {
         if (!is_dir($dir)) {
             mkdir($dir, 0777);
         }
-        $files = glob($dir . '/*');
-        foreach ($files as $file) {
-            if (is_file($file)) {
-                unlink($file);
-            }
-        }
-        move_uploaded_file($tmp_name, $dir . '/' . uniqid() . '.jpg');
+        move_uploaded_file($tmp_name, $dir.'/image.jpg');
     }
 
 }
