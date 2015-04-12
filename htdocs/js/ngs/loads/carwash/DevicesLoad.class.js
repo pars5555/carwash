@@ -24,22 +24,14 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
     },
     refreshDeviceImages: function () {
         var self = this;
-        jQuery('.devices_images').each(function () {
+        jQuery('.devices_images').on("load error", function () {
             var token = jQuery(this).attr('token');
             self.reloadImgs(token);
         });
     },
     reloadImgs: function (token) {
-        var self = this;
-        jQuery('#device_' + token + "_img").off();
         var path = jQuery('#device_' + token + "_img").attr('base_path');
         jQuery('#device_' + token + "_img").attr('src', path + "?dummy=" + Date.now());
-        jQuery('#device_' + token + "_img").one("load error", function () {
-            var token = jQuery(this).attr('token');
-            self.reloadImgs(token);
-
-        });
-
     },
     updatePage: function () {
         var self = this;

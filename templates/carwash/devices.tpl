@@ -11,7 +11,7 @@
                     {$device->getStatus()}
                 </span>
                 (<span id="device_total_amd_{$device->getId()}">{$device->getTotalAmd()}</span>դր)
-                <img class="devices_images" id="device_{$device->getSerialNumber()}_img" token="{$device->getSerialNumber()}" src="{$SITE_PATH}/img/devices/{$device->getSerialNumber()}/image.jpg" base_path="{$SITE_PATH}/img/devices/{$device->getSerialNumber()}/image.jpg" />
+                <img class="devices_images" id="device_{$device->getSerialNumber()}_img" token="{$device->getSerialNumber()}" src="{$SITE_PATH}/image/{$device->getSerialNumber()}" base_path="{$SITE_PATH}/image/{$device->getSerialNumber()}" />
                 <div id="device_action_buttons_{$device->getId()}" style="{if !$isDeviceOn}display:none{/if}">
                     <a href="javascript:void(0);" class="button grey inline-block f_reset_device_counter" device_id="{$device->getId()}">Reset Counter</a>
                     <a href="javascript:void(0);" class="button grey inline-block f_restart_device" device_id="{$device->getId()}">Restart Device</a>
