@@ -17,8 +17,11 @@ class GetImageAction extends BaseAction {
 
     private function showImage($picture) {
         if (file_exists($picture)) {
+            header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+            header("Cache-Control: post-check=0, pre-check=0", false);
+            header("Pragma: no-cache");
             header('Content-type: image/jpeg');
-            readfile($picture); 
+            readfile($picture);
         }
     }
 
