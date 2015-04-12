@@ -34,7 +34,7 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
     },
     reloadImgs: function (token) {
         var path = jQuery('#device_' + token + "_img").attr('base_path');
-        jQuery('#device_' + token + "_img").attr('src', '');
+        //jQuery('#device_' + token + "_img").attr('src', '');
         jQuery('#device_' + token + "_img").attr('src', path + "?dummy=" + Date.now());
     },
     updatePage: function () {
