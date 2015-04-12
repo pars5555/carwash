@@ -25,7 +25,7 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
     refreshDeviceImages: function () {
         var self = this;
         jQuery('.devices_images').on("load error", function () {
-            var token = jQuery(this.attr('token'));
+            var token = jQuery(this).attr('token');
             self.reloadImgs(token);
         });
     },
