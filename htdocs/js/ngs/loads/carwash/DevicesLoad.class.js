@@ -24,10 +24,15 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
 
     },
     refreshDeviceImages: function () {
-        jQuery('.devices_images').each(function () {
-            var path = jQuery(this).attr('base_path');
-            jQuery(this).attr('src', path + "?" + Date.now);
-        });
+        window.setInterval(function () {
+
+            jQuery('.devices_images').each(function () {
+                var path = jQuery(this).attr('base_path');
+                jQuery(this).attr('src', path + "?" + Date.now);
+            });
+
+        }, 500);
+
     },
     updatePage: function () {
         var self = this;
