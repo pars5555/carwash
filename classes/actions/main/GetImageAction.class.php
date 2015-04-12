@@ -17,8 +17,8 @@ class GetImageAction extends BaseAction {
 
     private function showImage($picture) {
         if (file_exists($picture)) {
-            header('Content-type: image/jpg');
-            imagejpeg($picture); 
+            header('Content-type: image/jpeg');
+            readfile($picture); 
         }
     }
 
