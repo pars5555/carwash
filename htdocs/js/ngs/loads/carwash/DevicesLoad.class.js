@@ -21,7 +21,6 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
         this.initSetStatisticsPagePasscodeButtons();
         this.updatePage();
         this.refreshDeviceImages();
-
     },
     refreshDeviceImages: function () {
         var self = this;
