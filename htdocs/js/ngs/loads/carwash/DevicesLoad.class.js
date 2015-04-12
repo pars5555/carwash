@@ -24,11 +24,11 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
     },
     refreshDeviceImages: function () {
         var self = this;
-        jQuery('.devices_images').on("load error", function () {
+        jQuery('.devices_images').load(function () {
             var token = jQuery(this).attr('token');
-            window.setTimeout(function () {
+            //window.setTimeout(function () {
                 self.reloadImgs(token);
-            }, 1000)
+            //}, 1000)
 
         });
     },
