@@ -3,6 +3,7 @@
 class Device {
 
     public $id;
+    public $serialNumber;
     public $title;
     public $statisticsPagePasscode;
     public $amd100Qty;
@@ -15,6 +16,10 @@ class Device {
 
     function getId() {
         return $this->id;
+    }
+
+    function getSerialNumber() {
+        return $this->serialNumber;
     }
 
     function getTitle() {
@@ -55,6 +60,10 @@ class Device {
 
     function setId($id) {
         $this->id = $id;
+    }
+
+    function setSerialNumber($serialNumber) {
+        $this->serialNumber = $serialNumber;
     }
 
     function setTitle($title) {

@@ -96,6 +96,7 @@ class DevicesManager extends AbstractManager {
         $tenSecondsBeforeNow = $datetime->format("Y-m-d H:i:s");
         $device = new Device();
         $device->setId($deviceDto->getId());
+        $device->setSerialNumber($deviceDto->getSerialNumber());
         $device->setTitle($deviceDto->getTitle());
         $device->setStatisticsPagePasscode($deviceDto->getStatisticsPagePasscode());
         $device->setAmd100Qty($deviceDto->getAmd100Qty());
