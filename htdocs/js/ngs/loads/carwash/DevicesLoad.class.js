@@ -23,13 +23,22 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
         this.refreshDeviceImages();
     },
     refreshDeviceImages: function () {
+        var self = this;
         window.setInterval(function () {
             jQuery('.devices_images').each(function () {
                 var path = jQuery(this).attr('base_path');
-                jQuery(this).attr('src', path + "?dummy=" + Date.now());
+                jQuery(this).attr('src', path + "?dummy=" + self.makeid());
             });
         }, 2000);
 
+    },
+    makeid: function ()
+    {
+        var text = "";
+        var possible = "abcdefghijklmnopqrstuvwxyz0123456789";
+        for (var i = 0; i < 20; i++)
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        return text;
     },
     updatePage: function () {
         var self = this;
