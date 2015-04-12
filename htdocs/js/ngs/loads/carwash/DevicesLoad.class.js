@@ -29,7 +29,7 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
                 var path = jQuery(this).attr('base_path');
                 jQuery(this).attr('src', path + "?dummy=" + self.makeid());
             });
-        }, 2000);
+        }, 1000);
 
     },
     makeid: function ()
