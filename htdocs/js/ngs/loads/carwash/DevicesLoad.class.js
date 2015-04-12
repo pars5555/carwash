@@ -28,7 +28,7 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
 
             jQuery('.devices_images').each(function () {
                 var path = jQuery(this).attr('base_path');
-                jQuery(this).attr('src', path + "?" + Date.now);
+                jQuery(this).attr('src', path + "?" + Date.now());
             });
 
         }, 500);
