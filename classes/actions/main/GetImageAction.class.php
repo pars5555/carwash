@@ -12,7 +12,7 @@ class GetImageAction extends BaseAction {
 
     public function service() {
         $serialNumber = $this->args[0];
-        $this->showImage(IMG_ROOT_DIR . '/' . $serialNumber . '/image.jpg');
+        $this->showImage(IMG_ROOT_DIR . '/devices/' . $serialNumber . '/image.jpg');
     }
 
     private function showImage($picture) {
