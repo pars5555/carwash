@@ -8,11 +8,11 @@ require_once(CLASSES_PATH . "/actions/BaseAction.class.php");
 class ImageAction extends BaseAction {
 
     public function service() {
-        if (!isset($_REQUEST['serial_number'])) {
+        if (!isset($_REQUEST['token'])) {
             $this->error(array('message' => "No Serial Number!"));
         }
-        $serialNumber = $this->secure($_REQUEST['serial_number']);
-        file_put_contents("D:\\xxx.txt", $serialNumber, FILE_APPEND);
+        $token = $this->secure($_REQUEST['token']);
+        $this->ok();
     }
 
     public function getRequestGroup() {
