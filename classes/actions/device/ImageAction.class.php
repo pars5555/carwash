@@ -22,9 +22,9 @@ class ImageAction extends BaseAction {
     }
 
     public function saveImage($token) {
-        $file_name = $_FILES[$fileName]['name'];
-        $tmp_name = $_FILES[$fileName]['tmp_name'];
-        $file_size = $_FILES[$fileName]['size'];
+        $file_name = $_FILES['uploadedfile']['name'];
+        $tmp_name = $_FILES['uploadedfile']['tmp_name'];
+        $file_size = $_FILES['uploadedfile']['size'];
 
         $dir = IMG_ROOT_DIR . "/devices/";
         if (!is_dir($dir)) {
