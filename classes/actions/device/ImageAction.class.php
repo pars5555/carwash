@@ -34,7 +34,7 @@ class ImageAction extends BaseAction {
         if (!is_dir($dir)) {
             mkdir($dir, 0777);
         }
-        move_uploaded_file($tmp_name, $dir.'/image.jpg');
+        move_uploaded_file($tmp_name, $dir . '/image.jpg');
     }
 
 }
