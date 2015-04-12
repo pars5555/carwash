@@ -52,9 +52,6 @@
                     Save
                 </button>
 
-                <p>
-                    Device will take effect after restart!
-                </p>
             </div>
         </div>
     </div>
