@@ -20,7 +20,14 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
         this.initChargeDeviceButtons();
         this.initSetStatisticsPagePasscodeButtons();
         this.updatePage();
+        this.refreshDeviceImages();
 
+    },
+    refreshDeviceImages: function () {
+        jQuery('.devices_images').each(function () {
+            var path = jQuery(this).attr('base_path');
+            jQuery(this).attr('src', path + "?" + Date.now);
+        });
     },
     updatePage: function () {
         var self = this;
@@ -55,7 +62,7 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
             jQuery('#savePassBtn').css({'display': "block"});
             var deviceId = jQuery(this).attr('device_id');
             jQuery('#passcode_device_id').val(deviceId);
-            var currentPasscode = jQuery('#statistics_page_passcode_'+deviceId).val();
+            var currentPasscode = jQuery('#statistics_page_passcode_' + deviceId).val();
             var i = 0;
             jQuery('#deviceStatisticsPascodeModal .f_modal_content').find('select').each(function () {
                 jQuery(this).val(currentPasscode[i++]);
