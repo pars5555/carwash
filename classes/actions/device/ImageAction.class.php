@@ -22,7 +22,6 @@ class ImageAction extends BaseAction {
     }
 
     public function saveImage($token) {
-        $originalPictureFullName = null;
         $file_name = $_FILES[$fileName]['name'];
         $tmp_name = $_FILES[$fileName]['tmp_name'];
         $file_size = $_FILES[$fileName]['size'];
