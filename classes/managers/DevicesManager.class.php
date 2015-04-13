@@ -59,7 +59,7 @@ class DevicesManager extends AbstractManager {
             $deviceDto->setIsBusy($isBusy);
             $deviceDto->setTitle($deviceTitle);
             $deviceDto->setStatisticsPagePasscode($statisticsPagePasscode);
-            $createDto->setResetCounterButton($resetCounterButton);
+            $deviceDto->setResetCounterButton($resetCounterButton);
             $deviceDto->setAmd100Qty($amd100Qty);
             $deviceDto->setAmd200Qty($amd200Qty);
             $deviceDto->setAmd500Qty($amd500Qty);
