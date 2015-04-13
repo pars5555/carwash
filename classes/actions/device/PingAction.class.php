@@ -10,9 +10,9 @@ require_once(CLASSES_PATH . "/managers/DevicePendingActionsManager.class.php");
 class PingAction extends BaseAction {
 
     public function service() {
-        list($serialNumber, $deviceTitle, $statisticsPagePasscode, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty) = $this->validateFields();
+        list($serialNumber, $deviceTitle, $statisticsPagePasscode, $resetCounterButton, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty) = $this->validateFields();
         $devicesManager = DevicesManager::getInstance();
-        $devicesManager->updateDeviceParameters($serialNumber, $deviceTitle, $statisticsPagePasscode,$carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty);
+        $devicesManager->updateDeviceParameters($serialNumber, $deviceTitle, $statisticsPagePasscode,$resetCounterButton, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty);
         $deviceDto = $devicesManager->getBySerialNumber($serialNumber);
         $deviceId = $deviceDto->getId();
         $devicePendingActionsManager = DevicePendingActionsManager::getInstance();
@@ -32,6 +32,7 @@ class PingAction extends BaseAction {
         $serialNumber = $this->secure($_REQUEST['serial_number']);
         $deviceTitle = $this->secure($_REQUEST['device_title']);
         $statisticsPagePasscode = $this->secure($_REQUEST['statistics_page_passcode']);
+        $resetCounterButton= $this->secure($_REQUEST['reset_counter_button']);
         if (!isset($_REQUEST['carwash_id'])) {
             $this->error(array('message' => "No Carwash id!"));
         }
@@ -59,7 +60,7 @@ class PingAction extends BaseAction {
         if ($carwashId <= 0) {
             $this->error(array('message' => "Wrong Carwash Id!"));
         }
-        return array($serialNumber, $deviceTitle, $statisticsPagePasscode, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty);
+        return array($serialNumber, $deviceTitle, $statisticsPagePasscode,$resetCounterButton, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty);
     }
 
 }
