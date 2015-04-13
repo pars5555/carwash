@@ -87,7 +87,7 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
         jQuery('#savePassBtn').click(function () {
             jQuery(this).css({'display': "none"});
             var passcode = "";
-            jQuery('#deviceStatisticsPascodeModal .f_modal_content').find('select').each(function () {
+            jQuery('#deviceStatisticsPascodeModal .f_modal_content .f_passcode').find('select').each(function () {
                 var buttonIndex = jQuery(this).val();
                 passcode += buttonIndex;
             });
