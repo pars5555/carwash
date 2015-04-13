@@ -37,7 +37,7 @@ class DevicesManager extends AbstractManager {
         return self::$instance;
     }
 
-    public function updateDeviceParameters($serialNumber, $deviceTitle, $statisticsPagePasscode, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty) {
+    public function updateDeviceParameters($serialNumber, $deviceTitle, $statisticsPagePasscode, $resetCounterButton, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty) {
         $carwashDevicesManager = CarwashDevicesManager::getInstance();
         $deviceDtos = $this->selectByField("serial_number", $serialNumber);
         if (empty($deviceDtos)) {
@@ -45,6 +45,7 @@ class DevicesManager extends AbstractManager {
             $createDto->setSerialNumber($serialNumber);
             $createDto->setTitle($deviceTitle);
             $createDto->setStatisticsPagePasscode($statisticsPagePasscode);
+            $createDto->setResetCounterButton($resetCounterButton);
             $createDto->setIsBusy($isBusy);
             $createDto->setAmd100Qty($amd100Qty);
             $createDto->setAmd200Qty($amd200Qty);
@@ -58,6 +59,7 @@ class DevicesManager extends AbstractManager {
             $deviceDto->setIsBusy($isBusy);
             $deviceDto->setTitle($deviceTitle);
             $deviceDto->setStatisticsPagePasscode($statisticsPagePasscode);
+            $createDto->setResetCounterButton($resetCounterButton);
             $deviceDto->setAmd100Qty($amd100Qty);
             $deviceDto->setAmd200Qty($amd200Qty);
             $deviceDto->setAmd500Qty($amd500Qty);
@@ -99,6 +101,7 @@ class DevicesManager extends AbstractManager {
         $device->setSerialNumber($deviceDto->getSerialNumber());
         $device->setTitle($deviceDto->getTitle());
         $device->setStatisticsPagePasscode($deviceDto->getStatisticsPagePasscode());
+        $device->setResetCounterButton($deviceDto->getResetCounterButton());
         $device->setAmd100Qty($deviceDto->getAmd100Qty());
         $device->setAmd200Qty($deviceDto->getAmd200Qty());
         $device->setAmd500Qty($deviceDto->getAmd500Qty());

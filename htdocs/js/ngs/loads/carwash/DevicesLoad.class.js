@@ -23,22 +23,13 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
         this.refreshDeviceImages();
     },
     refreshDeviceImages: function () {
-        var self = this;
         window.setInterval(function () {
             jQuery('.devices_images').each(function () {
                 var path = jQuery(this).attr('base_path');
-                jQuery(this).attr('src', path + "?dummy=" + self.makeid());
+                jQuery(this).attr('src', path + "?dummy=" + Date.now());
             });
         }, 1000);
 
-    },
-    makeid: function ()
-    {
-        var text = "";
-        var possible = "abcdefghijklmnopqrstuvwxyz0123456789";
-        for (var i = 0; i < 20; i++)
-            text += possible.charAt(Math.floor(Math.random() * possible.length));
-        return text;
     },
     updatePage: function () {
         var self = this;
@@ -74,10 +65,13 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
             var deviceId = jQuery(this).attr('device_id');
             jQuery('#passcode_device_id').val(deviceId);
             var currentPasscode = jQuery('#statistics_page_passcode_' + deviceId).val();
+            var resetButton = jQuery('#reset_counter_button_' + deviceId).val();
+            jQuery('#reset_counter_select').val(resetButton);
             var i = 0;
-            jQuery('#deviceStatisticsPascodeModal .f_modal_content').find('select').each(function () {
+            jQuery('#deviceStatisticsPascodeModal .f_modal_content .f_passcode').find('select').each(function () {
                 jQuery(this).val(currentPasscode[i++]);
             });
+            
             jQuery("#deviceStatisticsPascodeModal .f_modal_content").addClass("active");
             jQuery("#deviceStatisticsPascodeModal").removeClass("hide");
             jQuery("#deviceStatisticsPascodeModal .close_button,#deviceStatisticsPascodeModal .overlay").click(function () {
@@ -97,8 +91,9 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
                 var buttonIndex = jQuery(this).val();
                 passcode += buttonIndex;
             });
+            var reset_button = jQuery('#reset_counter_select').val();
             var deviceId = jQuery('#passcode_device_id').val();
-            ngs.action('set_device_passcode', {'passcode': passcode, 'device_id': deviceId});
+            ngs.action('set_device_passcode', {'passcode': passcode,'reset_button': reset_button, 'device_id': deviceId});
             window.setTimeout(function () {
                 jQuery("#deviceStatisticsPascodeModal .f_modal_content").removeClass("active");
                 jQuery("#deviceStatisticsPascodeModal").addClass("hide");

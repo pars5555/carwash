@@ -6,6 +6,7 @@ class Device {
     public $serialNumber;
     public $title;
     public $statisticsPagePasscode;
+    public $resetCounterButton;
     public $amd100Qty;
     public $amd200Qty;
     public $amd500Qty;
@@ -28,6 +29,10 @@ class Device {
 
     function getStatisticsPagePasscode() {
         return $this->statisticsPagePasscode;
+    }
+
+    function getResetCounterButton() {
+        return $this->resetCounterButton;
     }
 
     function getAmd100Qty() {
@@ -72,6 +77,10 @@ class Device {
 
     function setStatisticsPagePasscode($statisticsPagePasscode) {
         $this->statisticsPagePasscode = $statisticsPagePasscode;
+    }
+
+    function setResetCounterButton($resetCounterButton) {
+        $this->resetCounterButton = $resetCounterButton;
     }
 
     function setAmd100Qty($amd100Qty) {

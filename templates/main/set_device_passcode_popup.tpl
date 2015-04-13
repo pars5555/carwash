@@ -5,44 +5,56 @@
         <button class="close_button"></button>
         <div class="modal-body">
             <div class="form-group">
-                <label class="input_label label" for="email">Set you pstatistics page Passcode</label>
-                <div class="select_wrapper">
-                    <select>
-                        <option value="1">Water</option>
-                        <option value="2">Foam</option>
-                        <option value="3">Pause</option>
-                    </select>
+                <div class="f_passcode">
+                    <label class="input_label label" for="email">Set your statistics page Passcode</label>
+                    <div class="select_wrapper">
+                        <select>
+                            <option value="1">Water</option>
+                            <option value="2">Foam</option>
+                            <option value="3">Pause</option>
+                        </select>
+                    </div>
+                    <div class="select_wrapper">
+                        <select>
+                            <option value="1">Water</option>
+                            <option value="2">Foam</option>
+                            <option value="3">Pause</option>
+                        </select>
+                    </div>
+                    <div class="select_wrapper">
+                        <select>
+                            <option value="1">Water</option>
+                            <option value="2">Foam</option>
+                            <option value="3">Pause</option>
+                        </select>
+                    </div>
+                    <div class="select_wrapper">
+                        <select>
+                            <option value="1">Water</option>
+                            <option value="2">Foam</option>
+                            <option value="3">Pause</option>
+                        </select>
+                    </div>
+                    <div class="select_wrapper">
+                        <select>
+                            <option value="1">Water</option>
+                            <option value="2">Foam</option>
+                            <option value="3">Pause</option>
+                        </select>
+                    </div>
+                    <div class="select_wrapper">
+                        <select>
+                            <option value="1">Water</option>
+                            <option value="2">Foam</option>
+                            <option value="3">Pause</option>
+                        </select>
+                    </div>
                 </div>
+
+
+                <label class="input_label label" for="email">Reset Counter Button</label>
                 <div class="select_wrapper">
-                    <select>
-                        <option value="1">Water</option>
-                        <option value="2">Foam</option>
-                        <option value="3">Pause</option>
-                    </select>
-                </div>
-                <div class="select_wrapper">
-                    <select>
-                        <option value="1">Water</option>
-                        <option value="2">Foam</option>
-                        <option value="3">Pause</option>
-                    </select>
-                </div>
-                <div class="select_wrapper">
-                    <select>
-                        <option value="1">Water</option>
-                        <option value="2">Foam</option>
-                        <option value="3">Pause</option>
-                    </select>
-                </div>
-                <div class="select_wrapper">
-                    <select>
-                        <option value="1">Water</option>
-                        <option value="2">Foam</option>
-                        <option value="3">Pause</option>
-                    </select>
-                </div>
-                <div class="select_wrapper">
-                    <select>
+                    <select id="reset_counter_select">
                         <option value="1">Water</option>
                         <option value="2">Foam</option>
                         <option value="3">Pause</option>

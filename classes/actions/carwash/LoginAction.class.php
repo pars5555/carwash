@@ -15,7 +15,7 @@ class LoginAction extends AbstractAction {
         $password = $this->secure($_REQUEST['password']);
         
         $carwashManager = CarwashManager::getInstance();
-        $carwashDto = $carwashManager->getByLoginPassword($login, $password);        
+        $carwashDto = $carwashManager->getByLoginPassword($login, $password);  
         if ($carwashDto) {
             $user = new CarwashUser($carwashDto->getId());  
             $user->setUniqueId($carwashDto->getHash());

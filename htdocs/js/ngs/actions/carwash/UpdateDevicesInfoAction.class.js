@@ -20,7 +20,9 @@ ngs.UpdateDevicesInfoAction = Class.create(ngs.AbstractAction, {
                 var totalAmd = device.totalAmd;
                 var status = device.status;
                 var passcode = device.statisticsPagePasscode;
+                var resetCounterButton = device.resetCounterButton;
                 jQuery('#statistics_page_passcode_' + deviceId).val(passcode);
+                jQuery('#reset_counter_button_' + deviceId).val(resetCounterButton);
                 jQuery('#device_total_amd_' + deviceId).html(totalAmd);
                 jQuery('#device_title_' + deviceId).html(title);
                 jQuery('#device_status_' + deviceId).html(status);

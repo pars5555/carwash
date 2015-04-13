@@ -15,6 +15,7 @@ class DeviceDto extends AbstractDto {
         "serial_number" => "serialNumber",
         "title" => "title",
         "statistics_page_passcode" => "statisticsPagePasscode",
+        "reset_counter_button" => "resetCounterButton",
         "amd_100_qty" => "amd100Qty",
         "amd_200_qty" => "amd200Qty",
         "amd_500_qty" => "amd500Qty",
