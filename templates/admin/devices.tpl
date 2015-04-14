@@ -13,7 +13,6 @@
                 </span>
                 (<span id="device_total_amd_{$device->getId()}">{$device->getTotalAmd()}</span>դր)
                 <div id="device_action_buttons_{$device->getId()}" style="{if $device->getStatus()=='off'}display:none{/if}">
-                    <img class="devices_images" alt="" src="{$SITE_PATH}/image/{$device->getSerialNumber()}" base_path="{$SITE_PATH}/image/{$device->getSerialNumber()}" style="width: 100px"/>
                     <a href="javascript:void(0);" class="button grey inline-block f_device_actions" device_id="{$device->getId()}">Actions</a>
 
                 </div>
