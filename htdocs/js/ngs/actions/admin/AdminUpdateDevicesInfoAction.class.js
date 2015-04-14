@@ -1,6 +1,6 @@
 ngs.AdminUpdateDevicesInfoAction = Class.create(ngs.AbstractAction, {
     initialize: function ($super, shortCut, ajaxLoader) {
-        $super(shortCut, "carwash", ajaxLoader);
+        $super(shortCut, "admin", ajaxLoader);
     },
     getUrl: function () {
         return "do_admin_update_devices_info";
