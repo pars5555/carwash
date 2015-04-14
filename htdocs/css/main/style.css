@@ -202,7 +202,7 @@ header{
 }
 
 .inline-block{
-    display: inline-block;
+    display: inline-block !important;
 }
 
 .login-wrapper .button{

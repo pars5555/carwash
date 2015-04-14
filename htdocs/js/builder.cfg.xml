@@ -86,6 +86,7 @@
                 <file>ngs/actions/carwash/SetDevicePasscodeAction.class.js</file>
                 <file>ngs/actions/carwash/RestartDeviceAction.class.js</file>
                 <file>ngs/actions/carwash/ChargeDeviceAction.class.js</file>
+                <file>ngs/actions/admin/SetDeviceConfigVariableAction.class.js</file>
              
             </files>
         </input>

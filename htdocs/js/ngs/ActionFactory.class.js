@@ -8,9 +8,10 @@ ngs.ActionFactory.prototype={
        this.actions["set_device_passcode"] = function temp(){return new ngs.SetDevicePasscodeAction("set_device_passcode", ajaxLoader);};
        this.actions["update_devices_info"] = function temp(){return new ngs.UpdateDevicesInfoAction("update_devices_info", ajaxLoader);};
        this.actions["charge_device"] = function temp(){return new ngs.ChargeDeviceAction("charge_device", ajaxLoader);};
+       
 
         //admin
-       // this.actions["admin_add_user"] = function temp(){return new ngs.AdminAddUserAction("admin_add_user", ajaxLoader);};
+       this.actions["admin_set_device_config_variable"] = function temp(){return new ngs.SetDeviceConfigVariableAction("admin_set_device_config_variable", ajaxLoader);};
         },
 
 	getAction: function(name){

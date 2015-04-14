@@ -18,5 +18,11 @@ ngs.AdminDeviceActionsPopupLoad = Class.create(ngs.AbstractLoad, {
         jQuery("#adminDeviceActionsPopupModal .close_button,#adminDeviceActionsPopupModal .overlay").click(function () {
             jQuery("#adminDeviceActionsPopupModal").remove();
         });
+        var deviceId = this.params.device_id;
+        jQuery(".f_save_btn").click(function () {
+            var varName = jQuery(this).parent().find("input:hidden").val();
+            var varValue = jQuery(this).parent().find("input:text").val();
+            ngs.action('admin_set_device_config_variable', {variable_name: varName, 'value': varValue, 'device_id': deviceId});
+        });
     }
 });
