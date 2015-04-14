@@ -1,12 +1,12 @@
 <?php
 
-require_once (CLASSES_PATH . "/actions/carwash/BaseCarwashAction.class.php");
+require_once (CLASSES_PATH . "/actions/admin/BaseAdminAction.class.php");
 require_once (CLASSES_PATH . "/managers/DevicePendingActionsManager.class.php");
 
 /**
  * @author Levon Naghashyan
  */
-class SetDeviceConfigVariableAction extends BaseCarwashAction {
+class SetDeviceConfigVariableAction extends BaseAdminAction {
 
     public function service() {
         $deviceId = intval($_REQUEST['device_id']);

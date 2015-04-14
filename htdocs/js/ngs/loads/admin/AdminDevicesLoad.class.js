@@ -21,7 +21,7 @@ ngs.AdminDevicesLoad = Class.create(ngs.AbstractLoad, {
     updatePage: function () {
         var self = this;
         window.setTimeout(function () {
-            //ngs.action('admin_update_devices_info', {});
+            ngs.action('admin_update_devices_info', {});
             self.updatePage();
         }, 1000);
     },
