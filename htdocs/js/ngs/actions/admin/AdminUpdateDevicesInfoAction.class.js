@@ -3,7 +3,7 @@ ngs.AdminUpdateDevicesInfoAction = Class.create(ngs.AbstractAction, {
         $super(shortCut, "admin", ajaxLoader);
     },
     getUrl: function () {
-        return "do_admin_update_devices_info";
+        return "do_update_devices_info";
     },
     getMethod: function () {
         return "POST";
