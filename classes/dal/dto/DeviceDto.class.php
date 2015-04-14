@@ -20,7 +20,10 @@ class DeviceDto extends AbstractDto {
         "amd_200_qty" => "amd200Qty",
         "amd_500_qty" => "amd500Qty",
         "last_ping" => "lastPing",
-        "is_busy" => "isBusy"
+        "is_busy" => "isBusy",
+        "server_ping_url" => "serverPingUrl",
+        "server_image_post_url" => "serverImagePostUrl",
+        "camera_available" => "cameraAvailable"
     );
 
     // constructs class instance

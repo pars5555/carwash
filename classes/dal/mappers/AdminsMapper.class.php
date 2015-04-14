@@ -62,7 +62,7 @@ class AdminsMapper extends AbstractMapper {
         return $this->tableName;
     }
 
-    private static $GET_USER_BY_USERNAME_AND_PASS = "SELECT * from `%s` WHERE `email` = '%s' AND BINARY `password` = '%s'";
+    private static $GET_USER_BY_USERNAME_AND_PASS = "SELECT * from `%s` WHERE `login` = '%s' AND BINARY `password` = '%s'";
 
     public function getByUsernamePassword($username, $password) {
         $sqlQuery = sprintf(self::$GET_USER_BY_USERNAME_AND_PASS, $this->getTableName(), $username, $password);

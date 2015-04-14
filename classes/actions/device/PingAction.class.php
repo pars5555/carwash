@@ -10,9 +10,9 @@ require_once(CLASSES_PATH . "/managers/DevicePendingActionsManager.class.php");
 class PingAction extends BaseAction {
 
     public function service() {
-        list($serialNumber, $deviceTitle, $statisticsPagePasscode, $resetCounterButton, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty) = $this->validateFields();
+        list($serialNumber, $deviceTitle, $statisticsPagePasscode, $resetCounterButton, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty, $server_ping_url, $server_image_post_url,$camera_available) = $this->validateFields();
         $devicesManager = DevicesManager::getInstance();
-        $devicesManager->updateDeviceParameters($serialNumber, $deviceTitle, $statisticsPagePasscode,$resetCounterButton, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty);
+        $devicesManager->updateDeviceParameters($serialNumber, $deviceTitle, $statisticsPagePasscode,$resetCounterButton, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty, $server_ping_url, $server_image_post_url,$camera_available);
         $deviceDto = $devicesManager->getBySerialNumber($serialNumber);
         $deviceId = $deviceDto->getId();
         $devicePendingActionsManager = DevicePendingActionsManager::getInstance();
@@ -33,6 +33,9 @@ class PingAction extends BaseAction {
         $deviceTitle = $this->secure($_REQUEST['device_title']);
         $statisticsPagePasscode = $this->secure($_REQUEST['statistics_page_passcode']);
         $resetCounterButton= $this->secure($_REQUEST['reset_counter_button']);
+        $server_ping_url= $this->secure($_REQUEST['server_ping_url']);
+        $server_image_post_url= $this->secure($_REQUEST['server_image_post_url']);
+        $camera_available= $this->secure($_REQUEST['camera_available']);
         if (!isset($_REQUEST['carwash_id'])) {
             $this->error(array('message' => "No Carwash id!"));
         }
@@ -60,7 +63,7 @@ class PingAction extends BaseAction {
         if ($carwashId <= 0) {
             $this->error(array('message' => "Wrong Carwash Id!"));
         }
-        return array($serialNumber, $deviceTitle, $statisticsPagePasscode,$resetCounterButton, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty);
+        return array($serialNumber, $deviceTitle, $statisticsPagePasscode,$resetCounterButton, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty, $server_ping_url, $server_image_post_url,$camera_available);
     }
 
 }

@@ -9,11 +9,10 @@ require_once(CLASSES_PATH . "/managers/AdminsManager.class.php");
 class LoginAction extends AbstractAction {
 
     public function service() {
-        $username = $this->secure($_REQUEST['username']);
+        $login = $this->secure($_REQUEST['login']);
         $password = $this->secure($_REQUEST['password']);
         $adminsManager = AdminsManager::getInstance();
-        $adminDto = $adminsManager->getByLoginPassword($username, $password);
-       
+        $adminDto = $adminsManager->getByLoginPassword($login, $password);
         if ($adminDto) {
             $adminUser = new AdminUser($adminDto->getId());
             $adminUser->setUniqueId($adminDto->getHash());

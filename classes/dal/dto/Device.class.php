@@ -14,6 +14,9 @@ class Device {
     public $isBusy;
     public $lastPing;
     public $status;
+    public $serverPingUrl;
+    public $serverImagePostUrl;
+    public $cameraAvailable;
 
     function getId() {
         return $this->id;
@@ -109,6 +112,30 @@ class Device {
 
     function setStatus($status) {
         $this->status = $status;
+    }
+
+    function getServerPingUrl() {
+        return $this->serverPingUrl;
+    }
+
+    function getServerImagePostUrl() {
+        return $this->serverImagePostUrl;
+    }
+
+    function getCameraAvailable() {
+        return $this->cameraAvailable;
+    }
+
+    function setServerPingUrl($serverPingUrl) {
+        $this->serverPingUrl = $serverPingUrl;
+    }
+
+    function setServerImagePostUrl($serverImagePostUrl) {
+        $this->serverImagePostUrl = $serverImagePostUrl;
+    }
+
+    function setCameraAvailable($cameraAvailable) {
+        $this->cameraAvailable = $cameraAvailable;
     }
 
 }

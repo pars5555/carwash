@@ -63,7 +63,8 @@
                 <file>ngs/loads/carwash/DevicesLoad.class.js</file>
                 				
                 <file>ngs/loads/admin/AdminMainLoad.class.js</file>
-                <file>ngs/loads/admin/AdminHomeLoad.class.js</file>
+                <file>ngs/loads/admin/AdminDevicesLoad.class.js</file>
+                <file>ngs/loads/admin/AdminDeviceActionsPopupLoad.class.js</file>
             
                
                 

@@ -37,7 +37,7 @@ class DevicesManager extends AbstractManager {
         return self::$instance;
     }
 
-    public function updateDeviceParameters($serialNumber, $deviceTitle, $statisticsPagePasscode, $resetCounterButton, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty) {
+    public function updateDeviceParameters($serialNumber, $deviceTitle, $statisticsPagePasscode, $resetCounterButton, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty, $server_ping_url, $server_image_post_url,$camera_available) {
         $carwashDevicesManager = CarwashDevicesManager::getInstance();
         $deviceDtos = $this->selectByField("serial_number", $serialNumber);
         if (empty($deviceDtos)) {
@@ -51,6 +51,9 @@ class DevicesManager extends AbstractManager {
             $createDto->setAmd200Qty($amd200Qty);
             $createDto->setAmd500Qty($amd500Qty);
             $createDto->setLastPing(date('Y-m-d H:i:s'));
+            $createDto->setServerPingUrl($server_ping_url);
+            $createDto->setServerImagePostUrl($server_image_post_url);
+            $createDto->setCameraAvailable($camera_available);
             $deviceId = $this->insertDto($createDto);
             $carwashDevicesManager->addRow($carwashId, $deviceId);
             return true;
@@ -64,6 +67,9 @@ class DevicesManager extends AbstractManager {
             $deviceDto->setAmd200Qty($amd200Qty);
             $deviceDto->setAmd500Qty($amd500Qty);
             $deviceDto->setLastPing(date('Y-m-d H:i:s'));
+            $deviceDto->setServerPingUrl($server_ping_url);
+            $deviceDto->setServerImagePostUrl($server_image_post_url);
+            $deviceDto->setCameraAvailable($camera_available);
             $this->updateByPk($deviceDto);
             $carwashDeviceDtos = $carwashDevicesManager->selectByField("device_id", $deviceDto->getId());
             if (empty($carwashDeviceDtos) || $carwashDeviceDtos[0]->getCarwashId() !== $carwashId) {
@@ -107,6 +113,9 @@ class DevicesManager extends AbstractManager {
         $device->setAmd500Qty($deviceDto->getAmd500Qty());
         $device->setIsBusy($deviceDto->getIsBusy());
         $device->setLastPing($deviceDto->getLastPing());
+        $device->setServerPingUrl($deviceDto->getServerPingUrl());
+        $device->setServerImagePostUrl($deviceDto->getServerImagePostUrl());
+        $device->setCameraAvailable($deviceDto->getCameraAvailable());
         $lastPing = $deviceDto->getLastPing();
         $deviceIsOn = $tenSecondsBeforeNow < $deviceDto->getLastPing() && !empty($lastPing);
         if (!$deviceIsOn) {

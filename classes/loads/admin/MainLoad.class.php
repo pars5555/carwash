@@ -16,7 +16,7 @@ class MainLoad extends BaseGuestLoad {
     public function getDefaultLoads($args) {
         if (!isset($_REQUEST['page']) || empty($_REQUEST['page']))
         {
-            $_REQUEST['page'] = 'home';
+            $_REQUEST['page'] = 'devices';
         }
         $contentLoad = $_REQUEST['page'];
         $contentLoadClass = ucfirst($_REQUEST['page']) . 'Load';
