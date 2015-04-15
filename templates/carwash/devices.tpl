@@ -13,7 +13,9 @@
                 (<span id="device_total_amd_{$device->getId()}">{$device->getTotalAmd()}</span>դր)
                 <div id="device_action_buttons_{$device->getId()}" style="{if $device->getStatus()=='off'}display:none{/if}">
 
-                    <img class="devices_images" alt="" src="{$SITE_PATH}/image/{$device->getSerialNumber()}" base_path="{$SITE_PATH}/image/{$device->getSerialNumber()}" style="width: 100px"/>
+                    {if $device->getCameraAvailable()==1}
+                        <img class="devices_images" alt="" src="{$SITE_PATH}/image/{$device->getSerialNumber()}" base_path="{$SITE_PATH}/image/{$device->getSerialNumber()}" style="width: 100px"/>
+                    {/if}
                     <a href="javascript:void(0);" class="button grey inline-block f_reset_device_counter" device_id="{$device->getId()}">Reset Counter</a>
                     <a href="javascript:void(0);" class="button grey inline-block f_restart_device" device_id="{$device->getId()}">Restart Device</a>
                     <a href="javascript:void(0);" class="button grey inline-block f_charge_device" device_id="{$device->getId()}">Charge for 1 minute</a>
