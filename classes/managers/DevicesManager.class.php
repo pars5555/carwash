@@ -37,7 +37,7 @@ class DevicesManager extends AbstractManager {
         return self::$instance;
     }
 
-    public function updateDeviceParameters($serialNumber, $deviceTitle, $statisticsPagePasscode, $resetCounterButton, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty, $server_ping_url, $server_image_post_url,$camera_available, $server_host) {
+    public function updateDeviceParameters($serialNumber, $deviceTitle, $statisticsPagePasscode, $resetCounterButton, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty, $server_ping_url, $server_image_post_url, $camera_available, $server_host) {
         $carwashDevicesManager = CarwashDevicesManager::getInstance();
         $deviceDtos = $this->selectByField("serial_number", $serialNumber);
         if (empty($deviceDtos)) {
@@ -75,7 +75,9 @@ class DevicesManager extends AbstractManager {
             $this->updateByPk($deviceDto);
             $carwashDeviceDtos = $carwashDevicesManager->selectByField("device_id", $deviceDto->getId());
             if (empty($carwashDeviceDtos) || $carwashDeviceDtos[0]->getCarwashId() !== $carwashId) {
-                $carwashDevicesManager->deleteByPK($carwashDeviceDtos[0]->getId());
+                if (!empty($carwashDeviceDtos)) {
+                    $carwashDevicesManager->deleteByPK($carwashDeviceDtos[0]->getId());
+                }
                 $carwashDevicesManager->addRow($carwashId, $deviceDto->getId());
                 return true;
             }

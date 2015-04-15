@@ -36,10 +36,14 @@ class CarwashDevicesManager extends AbstractManager {
     }
 
     public function addRow($carwashId, $deviceId) {
-        $createDto = $this->createDto();
-        $createDto->setCarwashId($carwashId);
-        $createDto->setDeviceId($deviceId);
-        return $this->insertDto($createDto);
+        $selectByFields = $this->selectByFields(['carwash_id' => $carwashId, "device_id" => $deviceId]);
+        if (empty($selectByFields)) {
+            $createDto = $this->createDto();
+            $createDto->setCarwashId($carwashId);
+            $createDto->setDeviceId($deviceId);
+            return $this->insertDto($createDto);
+        }
+        return false;
     }
 
 }

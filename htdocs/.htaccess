@@ -3,6 +3,8 @@ RewriteBase /
 
 RewriteRule ^admin/login/?$  /dyn/admin/main/$1/?page=login [L,QSA]
 RewriteRule ^admin/?$  /dyn/admin/main/$1/?page=devices [L,QSA]
+RewriteRule ^admin/carwashes$  /dyn/admin/main/$1/?page=carwashes [L,QSA]
+RewriteRule ^admin/carwash/(.*)$  /dyn/admin/main/$1/?page=carwash [L,QSA]
 
 RewriteRule ^login$  /dyn/main/main/$1/?page=login [L,QSA]
 RewriteRule ^ping$  /dyn/device/do_ping/$1/ [L,QSA]
