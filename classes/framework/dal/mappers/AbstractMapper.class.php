@@ -121,6 +121,18 @@ abstract class AbstractMapper {
         return $this->fetchRows($sqlQuery);
     }
 
+    public function selectByFields($fieldValuesArrayMap) {
+        $sql = sprintf("SELECT * FROM `%s` WHERE 1=1 ", $this->getTableName());
+        foreach ($fieldValuesArrayMap as $fieldName => $fieldValue) {
+            if (is_int($fieldValue)) {
+                $sql += sprintf("AND `%s` = %d", $this->getTableName(), $fieldName, $fieldValue);
+            } else {
+                $sql += sprintf("AND `%s` = '%s'", $this->getTableName(), $fieldName, $fieldValue);
+            }
+        }
+        return $this->fetchRows($sql);
+    }
+
     /**
      * Updates tables text field's value by primary key
      *
@@ -239,7 +251,7 @@ abstract class AbstractMapper {
         return -1;
     }
 
-    /**    
+    /**
      *
      * @param object $id - the unique identifier of table
      * @return affacted rows count or -1 if something goes wrong
