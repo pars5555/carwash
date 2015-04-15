@@ -23,7 +23,8 @@ class DeviceDto extends AbstractDto {
         "is_busy" => "isBusy",
         "server_ping_url" => "serverPingUrl",
         "server_image_post_url" => "serverImagePostUrl",
-        "camera_available" => "cameraAvailable"
+        "camera_available" => "cameraAvailable",
+        "server_host" => "serverHost"
     );
 
     // constructs class instance

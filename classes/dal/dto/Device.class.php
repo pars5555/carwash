@@ -17,6 +17,7 @@ class Device {
     public $serverPingUrl;
     public $serverImagePostUrl;
     public $cameraAvailable;
+    public $serverHost;
 
     function getId() {
         return $this->id;
@@ -136,6 +137,14 @@ class Device {
 
     function setCameraAvailable($cameraAvailable) {
         $this->cameraAvailable = $cameraAvailable;
+    }
+
+    function getServerHost() {
+        return $this->serverHost;
+    }
+
+    function setServerHost($serverHost) {
+        $this->serverHost = $serverHost;
     }
 
 }

@@ -25,6 +25,13 @@
             </div>
 
             <div class="form-group">
+                <label class="input_label label inline-block" for="email">Server Host</label>
+                <input type="text" value="{$ns.deviceDto->getServerHost()}"/>
+                <input type="hidden" value="server_host" name="variable_name"/>                
+                <button class="button blue inline-block f_save_btn">Save</button>
+            </div>
+                
+            <div class="form-group">
                 <label class="input_label label inline-block" for="email">Ping URL</label>
                 <input type="text" value="{$ns.deviceDto->getServerPingUrl()}"/>
                 <input type="hidden" value="server_ping_url" name="variable_name"/>                
