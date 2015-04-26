@@ -61,13 +61,11 @@
                 <file doc="true">ngs/loads/AbstractLoad.class.js</file>
                 <file>ngs/loads/main/MainLoad.class.js</file>
                 <file>ngs/loads/carwash/DevicesLoad.class.js</file>
-                				
                 <file>ngs/loads/admin/AdminMainLoad.class.js</file>
                 <file>ngs/loads/admin/AdminDevicesLoad.class.js</file>
+                <file>ngs/loads/admin/AdminCarwashesLoad.class.js</file>
                 <file>ngs/loads/admin/AdminDeviceActionsPopupLoad.class.js</file>
-            
-               
-                
+                <file>ngs/loads/admin/AdminDeviceUpdatePopupLoad.class.js</file>
             </files>
         </input>
     </builder>
@@ -88,6 +86,7 @@
                 <file>ngs/actions/carwash/ChargeDeviceAction.class.js</file>
                 <file>ngs/actions/admin/SetDeviceConfigVariableAction.class.js</file>
                 <file>ngs/actions/admin/AdminUpdateDevicesInfoAction.class.js</file>
+                <file>ngs/actions/admin/AdminUpdateDeviceFirmwareAction.class.js</file>
              
             </files>
         </input>

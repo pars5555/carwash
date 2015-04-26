@@ -102,6 +102,7 @@ abstract class AbstractManager {
     }
 
     private $selectByPkCache = null;
+
     public function selectByPK($pk, $cache = false) {
         if (!isset($this->selectByPkCache) || !$cache) {
             $this->selectByPkCache = $this->mapper->selectByPK($pk);
@@ -139,6 +140,14 @@ abstract class AbstractManager {
 
     public function selectAll() {
         return $this->mapper->selectAll();
+    }
+
+    public function mapDtosById($dtos) {
+        $ret = array();
+        foreach ($dtos as $dto) {
+            $ret [$dto->getId()] = $dto;
+        }
+        return $ret;
     }
 
 }

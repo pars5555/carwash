@@ -46,6 +46,16 @@ class CarwashDevicesManager extends AbstractManager {
         return false;
     }
 
+    public function getCarwashDevicesIdsArray($carwashId) {
+        $dtos = $this->selectByField('carwash_id' , $carwashId);
+        $ret = array();
+        foreach ($dtos as $dto) {
+            $ret [] = $dto->getDeviceId();
+        }
+        $ret = array_unique($ret);
+        return $ret;
+    }
+
 }
 
 ?>

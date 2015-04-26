@@ -17,6 +17,7 @@ ngs.AdminDevicesLoad = Class.create(ngs.AbstractLoad, {
     afterLoad: function () {
         this.updatePage();
         this.initSetStatisticsPagePasscodeButtons();
+        this.initUpdateDeviceButtons();
     },
     updatePage: function () {
         var self = this;
@@ -31,5 +32,11 @@ ngs.AdminDevicesLoad = Class.create(ngs.AbstractLoad, {
             ngs.load('admin_device_actions_popup', {device_id: device_id});
         });
         
+    },
+    initUpdateDeviceButtons:function(){
+        jQuery('.f_device_update_buttons').click(function () {
+            var device_id = jQuery(this).attr('device_id');
+            ngs.load('admin_device_update_popup', {device_id: device_id});
+        });
     }
 });

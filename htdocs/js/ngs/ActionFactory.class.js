@@ -13,6 +13,7 @@ ngs.ActionFactory.prototype={
         //admin
        this.actions["admin_set_device_config_variable"] = function temp(){return new ngs.SetDeviceConfigVariableAction("admin_set_device_config_variable", ajaxLoader);};
        this.actions["admin_update_devices_info"] = function temp(){return new ngs.AdminUpdateDevicesInfoAction("admin_update_devices_info", ajaxLoader);};
+       this.actions["admin_update_device_firmware"] = function temp(){return new ngs.AdminUpdateDeviceFirmwareAction("admin_update_device_firmware", ajaxLoader);};
         },
 
 	getAction: function(name){

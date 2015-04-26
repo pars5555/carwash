@@ -53,6 +53,7 @@ define("BIN_DIR", NGS_ROOT . "/bin");
 //---defining interface images dir
 define("IMG_ROOT_DIR", NGS_ROOT . "/htdocs/img");
 define("CSS_ROOT_DIR", NGS_ROOT . "/htdocs/css");
+define("HTDOCS_TMP_DIR", NGS_ROOT . "/htdocs/tmp");
 
 define("DBMS", CLASSES_PATH . "/util/db/ImprovedDBMS.class.php");
 if (!isset($_SERVER['environment'])) {

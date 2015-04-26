@@ -14,9 +14,11 @@
                 (<span id="device_total_amd_{$device->getId()}">{$device->getTotalAmd()}</span>դր)
                 <div id="device_action_buttons_{$device->getId()}" style="{if $device->getStatus()=='off'}display:none{/if}">
                     <a href="javascript:void(0);" class="button grey inline-block f_device_actions" device_id="{$device->getId()}">Actions</a>
+                    <a href="javascript:void(0);" class="button grey inline-block f_device_update_buttons" device_id="{$device->getId()}">Update</a>
                 </div>
             {/foreach}
         </div>
     </div>
 </div>
 <div id="admin_device_actions_container"></div>
+<div id="admin_device_update_container"></div>
