@@ -24,6 +24,7 @@ class DeviceDto extends AbstractDto {
         "server_ping_url" => "serverPingUrl",
         "server_image_post_url" => "serverImagePostUrl",
         "camera_available" => "cameraAvailable",
+        "not_working" => "notWorking",
         "server_host" => "serverHost"
     );
 
