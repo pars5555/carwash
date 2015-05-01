@@ -10,9 +10,9 @@ require_once(CLASSES_PATH . "/managers/DevicePendingActionsManager.class.php");
 class PingAction extends BaseAction {
 
     public function service() {
-        list($serialNumber, $deviceTitle, $statisticsPagePasscode, $resetCounterButton, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty, $server_ping_url, $server_image_post_url,$camera_available, $server_host) = $this->validateFields();
+        list($serialNumber, $deviceTitle, $statisticsPagePasscode, $resetCounterButton, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty, $server_ping_url, $server_image_post_url,$camera_available,$not_working, $server_host) = $this->validateFields();
         $devicesManager = DevicesManager::getInstance();
-        $devicesManager->updateDeviceParameters($serialNumber, $deviceTitle, $statisticsPagePasscode,$resetCounterButton, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty, $server_ping_url, $server_image_post_url,$camera_available, $server_host);
+        $devicesManager->updateDeviceParameters($serialNumber, $deviceTitle, $statisticsPagePasscode,$resetCounterButton, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty, $server_ping_url, $server_image_post_url,$camera_available, $not_working, $server_host);
         $deviceDto = $devicesManager->getBySerialNumber($serialNumber);
         $deviceId = $deviceDto->getId();
         $devicePendingActionsManager = DevicePendingActionsManager::getInstance();
@@ -36,6 +36,7 @@ class PingAction extends BaseAction {
         $server_ping_url= $this->secure($_REQUEST['server_ping_url']);
         $server_image_post_url= $this->secure($_REQUEST['server_image_post_url']);
         $camera_available= $this->secure($_REQUEST['camera_available']);
+        $not_working = $this->secure($_REQUEST['not_working']);
         $server_host  = $this->secure($_REQUEST['server_host']);
         if (!isset($_REQUEST['carwash_id'])) {
             $this->error(array('message' => "No Carwash id!"));
@@ -64,7 +65,7 @@ class PingAction extends BaseAction {
         if ($carwashId <= 0) {
             $this->error(array('message' => "Wrong Carwash Id!"));
         }
-        return array($serialNumber, $deviceTitle, $statisticsPagePasscode,$resetCounterButton, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty, $server_ping_url, $server_image_post_url,$camera_available, $server_host);
+        return array($serialNumber, $deviceTitle, $statisticsPagePasscode,$resetCounterButton, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty, $server_ping_url, $server_image_post_url,$camera_available, $not_working,$server_host);
     }
 
 }

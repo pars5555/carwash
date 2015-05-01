@@ -37,7 +37,7 @@ class DevicesManager extends AbstractManager {
         return self::$instance;
     }
 
-    public function updateDeviceParameters($serialNumber, $deviceTitle, $statisticsPagePasscode, $resetCounterButton, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty, $server_ping_url, $server_image_post_url, $camera_available, $server_host) {
+    public function updateDeviceParameters($serialNumber, $deviceTitle, $statisticsPagePasscode, $resetCounterButton, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty, $server_ping_url, $server_image_post_url, $camera_available, $not_working, $server_host) {
         $carwashDevicesManager = CarwashDevicesManager::getInstance();
         $deviceDtos = $this->selectByField("serial_number", $serialNumber);
         if (empty($deviceDtos)) {
@@ -54,6 +54,7 @@ class DevicesManager extends AbstractManager {
             $createDto->setServerPingUrl($server_ping_url);
             $createDto->setServerImagePostUrl($server_image_post_url);
             $createDto->setCameraAvailable($camera_available);
+            $createDto->setNotWorking($not_working);
             $createDto->setServerHost($server_host);
             $deviceId = $this->insertDto($createDto);
             $carwashDevicesManager->addRow($carwashId, $deviceId);
@@ -71,6 +72,7 @@ class DevicesManager extends AbstractManager {
             $deviceDto->setServerPingUrl($server_ping_url);
             $deviceDto->setServerImagePostUrl($server_image_post_url);
             $deviceDto->setCameraAvailable($camera_available);
+            $deviceDto->setNotWorking($not_working);
             $deviceDto->setServerHost($server_host);
             $this->updateByPk($deviceDto);
             $carwashDeviceDtos = $carwashDevicesManager->selectByField("device_id", $deviceDto->getId());
