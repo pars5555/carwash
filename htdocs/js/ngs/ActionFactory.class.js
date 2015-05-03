@@ -6,7 +6,7 @@ ngs.ActionFactory.prototype={
        this.actions["reset_device_counter"] = function temp(){return new ngs.ResetDeviceCounterAction("reset_device_counter", ajaxLoader);};
        this.actions["restart_device"] = function temp(){return new ngs.RestartDeviceAction("restart_device", ajaxLoader);};
        this.actions["set_device_passcode"] = function temp(){return new ngs.SetDevicePasscodeAction("set_device_passcode", ajaxLoader);};
-       this.actions["set_prices"] = function temp(){return new ngs.SetDevicePricesAction("set_prices", ajaxLoader);};
+       this.actions["set_device_prices"] = function temp(){return new ngs.SetDevicePricesAction("set_device_prices", ajaxLoader);};
        this.actions["update_devices_info"] = function temp(){return new ngs.UpdateDevicesInfoAction("update_devices_info", ajaxLoader);};
        this.actions["charge_device"] = function temp(){return new ngs.ChargeDeviceAction("charge_device", ajaxLoader);};
        
