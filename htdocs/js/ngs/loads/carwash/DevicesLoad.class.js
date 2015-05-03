@@ -107,10 +107,9 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
             jQuery(this).css({'display': "block"});
             var deviceId = jQuery(this).attr('device_id');
             jQuery('#set_price_device_id').val(deviceId);
-            var amd100ChargeSeconds = jQuery('#amd100_charge_seconds' + deviceId).val();
-            var amd200ChargeSeconds = jQuery('#amd200_charge_seconds' + deviceId).val();
-            var amd500ChargeSeconds = jQuery('#amd500_charge_seconds' + deviceId).val();
-            alert(amd100ChargeSeconds );
+            var amd100ChargeSeconds = jQuery('#amd100_charge_seconds_' + deviceId).val();
+            var amd200ChargeSeconds = jQuery('#amd200_charge_seconds_' + deviceId).val();
+            var amd500ChargeSeconds = jQuery('#amd500_charge_seconds_' + deviceId).val();
             jQuery("#amd100_charge_seconds").val(amd100ChargeSeconds);
             jQuery("#amd200_charge_seconds").val(amd200ChargeSeconds);
             jQuery("#amd500_charge_seconds").val(amd500ChargeSeconds);
