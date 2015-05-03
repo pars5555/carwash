@@ -1,9 +1,9 @@
-ngs.SetPricesAction = Class.create(ngs.AbstractAction, {
+ngs.SetDevicePricesAction = Class.create(ngs.AbstractAction, {
     initialize: function($super, shortCut, ajaxLoader) {
         $super(shortCut, "carwash", ajaxLoader);
     },
     getUrl: function() {
-        return "do_set_prices";
+        return "do_set_device_prices";
     },
     getMethod: function() {
         return "POST";
