@@ -131,7 +131,7 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
             var amd100ChargeSeconds = jQuery('#amd100_charge_seconds').val();
             var amd200ChargeSeconds = jQuery('#amd200_charge_seconds').val();
             var amd500ChargeSeconds = jQuery('#amd500_charge_seconds').val();
-            ngs.action('set_device_passcode', {
+            ngs.action('set_device_prices', {
                 'amd100_charge_seconds': amd100ChargeSeconds,
                 'amd200_charge_seconds': amd200ChargeSeconds,
                 'amd500_charge_seconds': amd500ChargeSeconds,
