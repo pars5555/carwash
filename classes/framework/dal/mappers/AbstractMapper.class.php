@@ -111,17 +111,20 @@ abstract class AbstractMapper {
      * @param object $id
      * @return
      */
-    public function selectByField($fieldName, $fieldValue) {
+    public function selectByField($fieldName, $fieldValue, $orderBy, $asc) {
 
         if (is_int($fieldValue)) {
             $sqlQuery = sprintf("SELECT * FROM `%s` WHERE `%s` = %d ", $this->getTableName(), $fieldName, $fieldValue);
         } else {
             $sqlQuery = sprintf("SELECT * FROM `%s` WHERE `%s` = '%s' ", $this->getTableName(), $fieldName, $fieldValue);
         }
+        if (!empty($orderBy)) {
+            $sqlQuery .= " order by " . $orderBy . " " . ($asc ? "ASC" : "DESC");
+        }
         return $this->fetchRows($sqlQuery);
     }
 
-    public function selectByFields($fieldValuesArrayMap) {
+    public function selectByFields($fieldValuesArrayMap, $orderBy, $asc) {
         $sql = sprintf("SELECT * FROM `%s` WHERE 1=1 ", $this->getTableName());
         foreach ($fieldValuesArrayMap as $fieldName => $fieldValue) {
             if (is_int($fieldValue)) {
@@ -129,6 +132,9 @@ abstract class AbstractMapper {
             } else {
                 $sql += sprintf("AND `%s` = '%s'", $this->getTableName(), $fieldName, $fieldValue);
             }
+        }
+        if (!empty($orderBy)) {
+            $sql .= " order by " . $orderBy . " " . ($asc ? "ASC" : "DESC");
         }
         return $this->fetchRows($sql);
     }

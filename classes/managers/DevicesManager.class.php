@@ -111,6 +111,17 @@ class DevicesManager extends AbstractManager {
         }
         return false;
     }
+    public function resetDeviceCounter($deviceId) {
+        $deviceDto = $this->selectByPK($deviceId);
+        if (isset($deviceDto)) {
+            $deviceDto->setAmd100Qty(0);
+            $deviceDto->setAmd200Qty(0);
+            $deviceDto->setAmd500Qty(0);
+            $this->updateByPk($deviceDto);
+            return true;
+        }
+        return false;
+    }
 
     public function convertToDeviceObject($deviceDto) {
         $datetime = new DateTime('-10 seconds');

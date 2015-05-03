@@ -89,12 +89,12 @@ abstract class AbstractManager {
         $this->mapper->unlockTables();
     }
 
-    public function selectByField($fieldName, $fieldValue) {
-        return $this->mapper->selectByField($fieldName, $fieldValue);
+    public function selectByField($fieldName, $fieldValue, $orderBy = null, $asc = true) {
+        return $this->mapper->selectByField($fieldName, $fieldValue,$orderBy,$asc);
     }
 
-    public function selectByFields($fieldNamesValuesMap) {
-        return $this->mapper->selectByFields($fieldNamesValuesMap);
+    public function selectByFields($fieldNamesValuesMap, $orderBy = null, $asc = true) {
+        return $this->mapper->selectByFields($fieldNamesValuesMap,$orderBy,$asc);
     }
 
     public function deleteByField($fieldName, $fieldValue) {
