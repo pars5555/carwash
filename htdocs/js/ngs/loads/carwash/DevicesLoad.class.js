@@ -104,7 +104,7 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
     },
     initSetPricesButtons: function () {
         jQuery('.f_set_prices').click(function () {
-            jQuery(this).css({'display': "block"});
+            jQuery('#savePricesBtn').css({'display': "block"});
             var deviceId = jQuery(this).attr('device_id');
             jQuery('#set_price_device_id').val(deviceId);
             var amd100ChargeSeconds = jQuery('#amd100_charge_seconds_' + deviceId).val();
