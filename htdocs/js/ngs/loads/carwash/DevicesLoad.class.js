@@ -110,6 +110,7 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
             var amd100ChargeSeconds = jQuery('#amd100_charge_seconds' + deviceId).val();
             var amd200ChargeSeconds = jQuery('#amd200_charge_seconds' + deviceId).val();
             var amd500ChargeSeconds = jQuery('#amd500_charge_seconds' + deviceId).val();
+            alert(amd100ChargeSeconds );
             jQuery("#amd100_charge_seconds").val(amd100ChargeSeconds);
             jQuery("#amd200_charge_seconds").val(amd200ChargeSeconds);
             jQuery("#amd500_charge_seconds").val(amd500ChargeSeconds);
