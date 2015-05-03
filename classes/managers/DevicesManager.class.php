@@ -37,7 +37,8 @@ class DevicesManager extends AbstractManager {
         return self::$instance;
     }
 
-    public function updateDeviceParameters($serialNumber, $deviceTitle, $statisticsPagePasscode, $resetCounterButton, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty, $server_ping_url, $server_image_post_url, $camera_available, $not_working, $server_host) {
+    public function updateDeviceParameters($serialNumber, $deviceTitle, $statisticsPagePasscode, $resetCounterButton, $carwashId, $isBusy, $amd100Qty, $amd200Qty, $amd500Qty, 
+            $amd100ChargeSeconds,$amd200ChargeSeconds,$amd500ChargeSeconds,$server_ping_url, $server_image_post_url, $camera_available, $not_working, $server_host) {
         $carwashDevicesManager = CarwashDevicesManager::getInstance();
         $deviceDtos = $this->selectByField("serial_number", $serialNumber);
         if (empty($deviceDtos)) {
@@ -50,6 +51,9 @@ class DevicesManager extends AbstractManager {
             $createDto->setAmd100Qty($amd100Qty);
             $createDto->setAmd200Qty($amd200Qty);
             $createDto->setAmd500Qty($amd500Qty);
+            $createDto->setAmd100ChargeSeconds($amd100ChargeSeconds);
+            $createDto->setAmd200ChargeSeconds($amd200ChargeSeconds);
+            $createDto->setAmd500ChargeSeconds($amd500ChargeSeconds);
             $createDto->setLastPing(date('Y-m-d H:i:s'));
             $createDto->setServerPingUrl($server_ping_url);
             $createDto->setServerImagePostUrl($server_image_post_url);
@@ -68,6 +72,9 @@ class DevicesManager extends AbstractManager {
             $deviceDto->setAmd100Qty($amd100Qty);
             $deviceDto->setAmd200Qty($amd200Qty);
             $deviceDto->setAmd500Qty($amd500Qty);
+            $deviceDto->setAmd100ChargeSeconds($amd100ChargeSeconds);
+            $deviceDto->setAmd200ChargeSeconds($amd200ChargeSeconds);
+            $deviceDto->setAmd500ChargeSeconds($amd500ChargeSeconds);
             $deviceDto->setLastPing(date('Y-m-d H:i:s'));
             $deviceDto->setServerPingUrl($server_ping_url);
             $deviceDto->setServerImagePostUrl($server_image_post_url);
