@@ -18,6 +18,7 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
         this.initResetDeviceCounterButtons();
         this.initRestartDeviceButtons();
         this.initChargeDeviceButtons();
+        this.initSetPricesButtons();
         this.initSetStatisticsPagePasscodeButtons();
         this.updatePage();
         this.refreshDeviceImages();
@@ -71,7 +72,7 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
             jQuery('#deviceStatisticsPascodeModal .f_modal_content .f_passcode').find('select').each(function () {
                 jQuery(this).val(currentPasscode[i++]);
             });
-            
+
             jQuery("#deviceStatisticsPascodeModal .f_modal_content").addClass("active");
             jQuery("#deviceStatisticsPascodeModal").removeClass("hide");
             jQuery("#deviceStatisticsPascodeModal .close_button,#deviceStatisticsPascodeModal .overlay").click(function () {
@@ -93,10 +94,48 @@ ngs.DevicesLoad = Class.create(ngs.AbstractLoad, {
             });
             var reset_button = jQuery('#reset_counter_select').val();
             var deviceId = jQuery('#passcode_device_id').val();
-            ngs.action('set_device_passcode', {'passcode': passcode,'reset_button': reset_button, 'device_id': deviceId});
+            ngs.action('set_device_passcode', {'passcode': passcode, 'reset_button': reset_button, 'device_id': deviceId});
             window.setTimeout(function () {
                 jQuery("#deviceStatisticsPascodeModal .f_modal_content").removeClass("active");
                 jQuery("#deviceStatisticsPascodeModal").addClass("hide");
+            }, 3000);
+        });
+
+    },
+    initSetPricesButtons: function () {
+        jQuery('.f_set_prices').click(function () {
+            jQuery(this).css({'display': "block"});
+            var deviceId = jQuery(this).attr('device_id');
+            jQuery('#set_price_device_id').val(deviceId);
+            var amd100ChargeSeconds = jQuery('#amd100_charge_seconds' + deviceId).val();
+            var amd200ChargeSeconds = jQuery('#amd200_charge_seconds' + deviceId).val();
+            var amd500ChargeSeconds = jQuery('#amd500_charge_seconds' + deviceId).val();
+            jQuery("#devicePricesModal .f_modal_content").addClass("active");
+            jQuery("#devicePricesModal").removeClass("hide");
+            jQuery("#devicePricesModal .close_button,#devicePricesModal .overlay").click(function () {
+                jQuery("#devicePricesModal .f_modal_content").removeClass("active");
+                jQuery("#devicePricesModal").addClass("hide");
+            });
+        });
+
+        jQuery(".overlay").click(function () {
+            jQuery(this).parent().addClass("hide");
+        });
+
+        jQuery('#savePricesBtn').click(function () {
+            jQuery(this).css({'display': "none"});
+            var deviceId = jQuery('#set_price_device_id').val();
+            var amd100ChargeSeconds = jQuery('#amd_100_charge_seconds').val();
+            var amd200ChargeSeconds = jQuery('#amd_200_charge_seconds').val();
+            var amd500ChargeSeconds = jQuery('#amd_500_charge_seconds').val();
+            ngs.action('set_device_passcode', {
+                'amd100_charge_seconds': amd100ChargeSeconds,
+                'amd200_charge_seconds': amd200ChargeSeconds,
+                'amd500_charge_seconds': amd500ChargeSeconds,
+                'device_id': deviceId});
+            window.setTimeout(function () {
+                jQuery("#devicePricesModal .f_modal_content").removeClass("active");
+                jQuery("#devicePricesModal").addClass("hide");
             }, 3000);
         });
 

@@ -10,6 +10,9 @@ class Device {
     public $amd100Qty;
     public $amd200Qty;
     public $amd500Qty;
+    public $amd100ChargeSeconds;
+    public $amd200ChargeSeconds;
+    public $amd500ChargeSeconds;
     public $totalAmd;
     public $isBusy;
     public $lastPing;
@@ -154,6 +157,30 @@ class Device {
 
     function setNotWorking($notWorking) {
         $this->notWorking = $notWorking;
+    }
+
+    function getAmd100ChargeSeconds() {
+        return $this->amd100ChargeSeconds;
+    }
+
+    function getAmd200ChargeSeconds() {
+        return $this->amd200ChargeSeconds;
+    }
+
+    function getAmd500ChargeSeconds() {
+        return $this->amd500ChargeSeconds;
+    }
+
+    function setAmd100ChargeSeconds($amd100ChargeSeconds) {
+        $this->amd100ChargeSeconds = $amd100ChargeSeconds;
+    }
+
+    function setAmd200ChargeSeconds($amd200ChargeSeconds) {
+        $this->amd200ChargeSeconds = $amd200ChargeSeconds;
+    }
+
+    function setAmd500ChargeSeconds($amd500ChargeSeconds) {
+        $this->amd500ChargeSeconds = $amd500ChargeSeconds;
     }
 
 }

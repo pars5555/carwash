@@ -14,6 +14,7 @@
                 {nest ns=content}
             </div>
             {include file="$TEMPLATE_DIR/main/set_device_passcode_popup.tpl"}
+            {include file="$TEMPLATE_DIR/main/set_device_prices_popup.tpl"}
         </div>
         <footer>
             {include file="$TEMPLATE_DIR/main/util/footer.tpl"} 

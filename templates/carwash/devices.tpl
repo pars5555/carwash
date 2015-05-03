@@ -22,6 +22,10 @@
                     <input type="hidden" value="{$device->getStatisticsPagePasscode()}"  id="statistics_page_passcode_{$device->getId()}" autocomplete="off"/>
                     <input type="hidden" value="{$device->getResetCounterButton()}"  id="reset_counter_button_{$device->getId()}" autocomplete="off"/>
                     <a href="javascript:void(0);" class="button grey inline-block f_set_statistics_page_passcode"  device_id="{$device->getId()}">Set Statistics Passcode</a>
+                    <input type="hidden" value="{$device->getAmd100ChargeSeconds()}"  id="amd100_charge_seconds_{$device->getId()}" autocomplete="off"/>
+                    <input type="hidden" value="{$device->getAmd200ChargeSeconds()}"  id="amd200_charge_seconds_{$device->getId()}" autocomplete="off"/>
+                    <input type="hidden" value="{$device->getAmd500ChargeSeconds()}"  id="amd500_charge_seconds_{$device->getId()}" autocomplete="off"/>
+                    <a href="javascript:void(0);" class="button grey inline-block f_set_prices"  device_id="{$device->getId()}">Set Prices</a>
 
                 </div>
             {/foreach}
