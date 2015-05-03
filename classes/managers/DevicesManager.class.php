@@ -124,6 +124,9 @@ class DevicesManager extends AbstractManager {
         $device->setAmd100Qty($deviceDto->getAmd100Qty());
         $device->setAmd200Qty($deviceDto->getAmd200Qty());
         $device->setAmd500Qty($deviceDto->getAmd500Qty());
+        $device->setAmd100ChargeSeconds($deviceDto->getAmd100ChargeSeconds());
+        $device->setAmd200ChargeSeconds($deviceDto->getAmd200ChargeSeconds());
+        $device->setAmd500ChargeSeconds($deviceDto->getAmd500ChargeSeconds());
         $device->setIsBusy($deviceDto->getIsBusy());
         $device->setLastPing($deviceDto->getLastPing());
         $device->setServerPingUrl($deviceDto->getServerPingUrl());
